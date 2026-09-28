@@ -1,0 +1,471 @@
+# Changelog
+
+## [v2.0.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v2.0.1)
+### XX/XX/2026
+
+**Improved:**
+* Load Embedly platform.js unconditionally instead of only when a card is detected in the DOM
+* Add collapsible mobile ToC toggle and fix mobile width/rule bugs
+* Pad and contain responsive table labels so long headers don't collide or overflow on mobile
+* Unify docsify-v5-core.css and responsive tables plugin across docsify-this and starter kits
+* Sync print.css image grid print rules from Docsify-This
+* Add optional Mermaid and LaTeX support, commented out by default
+* Add Edit this Page position and text settings and fix link vertical alignment
+* Enable crossChapter and use a patched pagination plugin that skips external links
+* Show pagination page names when the sidebar is hidden, with smaller titles on phones
+* Give long navbars (6 or more links) room for their extra rows on phones
+
+**Bugfix:**
+* Replaced icongr.am icons with Iconify API (Font Awesome 6)
+* Add top margin to tables and Mermaid diagrams so they don't sit flush against headings
+
+## [v2.0.0](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v2.0.0)
+### 07/27/2026
+
+**New:**
+* Built with the modernized and refactored Docsify v5 platform
+* Adoption of Docsify v5's new theme system for enhanced customization and a modern user interface
+* Use of Marked.js v17+ (from Docsify v5) for markdown rendering, providing improved compatibility and rendering capabilities
+* Added support for responsive tables (with thanks and appreciation to @jhildenbiddle for the original Docsify v4 Themeable plugin)
+
+**Improved:**
+* Updated ReadMe
+* Overall refined visual layout of various Markdown elements
+* Skip-link to content button, accessible via tab key (now via Docsify v5)
+* Aria attributes for Sidebar toggle button and current page link (now via Docsify v5)
+* Assigning proper roles and aria attributes to various site elements (now via Docsify v5)
+* Support for keyboard shortcuts, e.g. \ for hide or show Sidebar (now via Docsify v5)
+* Focus on hidden Sidebar items is prevented (now via Docsify v5)
+* Top navbar can now accept focus (now via Docsify v5)
+* Keyboard scrolling is supported within code blocks (via Docsify v5)
+* Improved search results, which exclude Markdown formatting syntax (via Docsify v5)
+* Added variable for applying Docsify v5 core theme defaults
+* Updated support of Docsify config topMargin to CSS var `scroll-padding-top`
+* Optional responsive table layout
+* Improve toc and toc-narrow display
+
+**Bugfix:**
+* Handle use of Coverpage title link with duplicate id
+* Fixed Font Awesome plugin regex to only match :fa- prefixed patterns
+
+**Breaking:**
+* With the use of Docsify v5, Legacy Browsers (for example, Internet Explorer 11) are no longer supported 
+
+# Changelog
+
+## [v1.3.7](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.7)
+### 06/03/2026
+
+**Improved:**
+* Add example use of 'include' to show shared a page between courses (cpt-363-3/resources.md)
+* Enhanced search results display with page grouping, section titles, smart deduplication, and keyboard navigation
+
+## [v1.3.6](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.6)
+### 12/23/2025
+
+**Improved:**
+* Hide empty rows in responsive tables
+* Left align rows in responsive tables
+* Version-lock Font Awesome CSS assets
+* Minor refresh of Sidebar UI
+
+## [v1.3.5](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.5)
+### 11/26/2025
+
+**New:**
+* Added sidebar banner image support via HTML image
+* Automatic image path resolution for HTML image assets using data-src attribute relative to site base path with fallback support
+* Added (long overdue) basic support for printing
+
+**Improved:**
+* Improved support for Docsify configuration settings of 'topMargin'
+
+## [v1.3.4](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.4)
+### 08/01/2025
+
+**New:**
+* Added CSS Markdown classes to support cards (`card` & `card-rounded`) and responsive card lists (`card-list`)
+* Added CSS Markdown classes to support header overlays on full-width images (`header-image-full-width-headings-overlay` and `header-tall-image-full-width-headings-overlay`)
+* Added support for topic index using standard links in first paragraph
+
+**Improved:**
+* Updated ReadMe
+* Improve visual design of h1 and h2 below top full width image (use HTML tags to keep default styling)
+
+**Bugfix:**
+* Minor CSS fixes
+
+## [v1.3.3](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.3)
+### 07/02/2025
+
+**Improved:**
+* Updated to use latest docsify-footnotes plugin (v2.2.1)
+
+## [v1.3.2](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.2)
+### 04/09/2025
+
+**Bugfix:**
+* Set margin instead of padding for images contained in columns
+
+## [v1.3.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.1)
+### 03/04/2025
+
+**Improved:**
+* Various minor enhancements to Search plugin
+* Adjusted default behaviour of image grid to add needed whitespace (padding) instead of cropping when source images are of different sizes (thanks to a helpful discussion with @davidmalawey)
+
+**Bugfix:**
+* Fixed incorrect theme CSS with regards to image scaling (with thanks and appreciation to @harlows for the PR)
+
+## [v1.3.0](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.3.0)
+### 03/04/2025
+
+**New:**
+* Support for image grid plugin, including customizations (with thanks and appreciation to @gllmAR)
+* Include zoom image plugin (not enabled by default)
+* Use of Docsify and Docsify Themeable preview build assets for access to upcoming Docsify accessibility enhancements authored by @jhildenbiddle (with thanks and appreciation to John and tested extensively in Docsify-This)
+
+**Improved:**
+* Updated ReadMe
+* Updated example custom CSS for Moodle LMS
+* Updated to latest stable Docsify 4.x preview build (including Marked 4.2.12)
+* Support horizontal scrolling in code blocks
+* Adjusted bottom margin for summary elements
+* Match Docsify-This CSS with Docsify Starter Kits CSS
+* Browser-level image lazy loading via plugin 'docsify-loading' no longer enabled by default to match updated Docsify-This behaviour
+* Default search plugin settings adjusted to match Docsify-This
+
+## [v1.2.20](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.20)
+### 12/03/2024
+
+**New:**
+* Added default setting of false for `mergeNavbar` to move Navbar items to the top of the Sidebar on smaller screens
+
+**Improved:**
+* Updated CSS with word-wrap for code blocks
+* Use of window.matchMedia.addListener replaced with window.matchMedia.addEventListener
+* Cleanup HTML
+* Update uses of Font Awesome
+* Match Docsify-This CSS with Docsify Starter Kits CSS
+
+**Bugfix:**
+* Scroll offset fix (with thanks and appreciation to @rizdaprasetya for the initial code)
+* Added missing Markdown Prism language file
+* Fix formatting conflict with Prism formatted code blocks
+
+## [v1.2.19](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.19)
+### 10/09/2024
+
+**Improved:**
+* Minor theme update
+
+## [v1.2.18](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.18)
+### 09/03/2024
+
+**Improved:**
+* Updated ReadMe
+
+## [v1.2.17](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.17)
+### 07/23/2024
+
+**Improved:**
+* Improve accessibility of Font Awesome icons when used for decorative elements (automatic addition of `aria-hidden` attribute assuming decorative icons)
+
+**Bugfix:**
+* Added indentation for LMS Links items in Docsify Sidebar
+
+## [v1.2.16](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.16)
+### 06/24/2024🏒
+
+**Improved:**
+* Adjusted bottom margin for summary elements
+* Improved Search plugin results list presentation, including source page title when appropriate
+
+**Bugfix:**
+* Check the global variable 'standalone' when setting externalLinkTarget
+
+## [v1.2.15](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.15)
+### 06/03/2024
+
+**Improved:**
+* Added CSS Markdown class to support responsive HTML images `responsive`
+
+**Bugfix:**
+* Added CSS to automatically wrap links that overflow
+* Added CSS to automatically wrap code blocks that overflow
+* Added CSS to better vertically align 'Edit this Page' emoji and text
+
+## [v1.2.14](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.14)
+### 04/29/2024
+
+**Bugfix:**
+* Remove CSS for use with accordion elements with plain details/summary elements
+
+## [v1.2.13](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.13)
+### 03/04/2024
+
+**New:**
+* Support for the Browser-level image lazy loading (with thanks and appreciation to @sy-records for the source plugin 'docsify-loading')
+
+**Improved:**
+* Add ability to define custom colors for badges (with thanks to @cmadland for the example use of colored badges)
+* Updated ReadMe
+* Updated Editor.css file for improved Markdown previews
+* Use docsify-loading plugin rather than added Javascript
+* Reorganize and update custom assets (as used in Docsify-This)
+
+**Bugfix:**   
+* Include missing docsify-footnotes plugin
+
+## [v1.2.12](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.12)
+### 02/09/2024
+
+**New:**
+* Added CSS Markdown class for right-aligned columns `column-right`
+* Added CSS Markdown class for full width background gradient header image (`header-image-fade-full-width`)
+
+**Improved:**   
+* ReadMe updated
+
+## [v1.2.11](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.11)
+### 01/18/2024
+
+**New:**   
+* Added CSS Markdown class `reverse-columns`
+* Added CSS Markdown class for taller full width header image `header-tall-image-full-width`
+* Added CSS Markdown class for rounded button `button-rounded`
+* Added CSS Markdown classes for secondary buttons `button-secondary` and `button-secondary-rounded`
+
+**Improved:**   
+* Improved image alignment with two column layouts
+* Improved contrast for unselected Tabs
+* Improved support of logo image in Docsify Sidebar
+* Adjusted display of full width header image
+
+## [v1.2.10](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.10)
+### 11/27/2023
+
+**Improved:**   
+* Added 'onedrive.live.com' to domains made responsive through the automatic addition of the CSS Markdown class `video-container-16by9`
+
+## [v1.2.9](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.9)
+### 11/15/2023
+
+**Improved:**   
+* ReadMe updated
+
+## [v1.2.8](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.8)
+### 08/31/2023
+
+**Improved:**   
+* ReadMe updated
+
+## [v1.2.7](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.7)
+### 08/25/2023
+
+**Improved:**   
+* Updated example custom CSS for LMSs
+* Cleanup default CSS
+* Adjusted badge colours for dark theme
+* Use light/dark theme display for topic indexes
+* Clarify light + dark theme use comments
+* ReadMe updated
+
+## [v1.2.6](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.6)
+### 08/15/2023
+
+**New:**   
+*  Support for nav pill (`navpill`) Markdown CSS class
+
+**Improved:**   
+* Added 'youtube-nocookie.com' to domains made responsive through the automatic addition of the CSS Markdown class `video-container-16by9`
+
+**Improved:**   
+* ReadMe updated
+
+## [v1.2.5](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.5)
+### 06/27/2023
+
+**Improved:**   
+* Match Docsify-This Markdown file rendering with Docsify Starter Kits CSS (incl. faded header image ToC adjustments and automatic responsive iFrames for YouTube and Google Docs embeds)
+
+## [v1.2.4](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.4)
+### 05/08/2023
+
+**Improved:**   
+* Refined responsize header line heights
+
+## [v1.2.3](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.3)
+### 04/09/2023
+
+**Improved:**   
+* Set font of buttons to sans-serif
+* Set font of badges to sans-serif
+* Remove unneeded GitHub image file path adjustments
+* Refined responsize header font size and line heights
+
+## [v1.2.2](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.2)
+### 03/13/2023
+
+**Improved:**   
+* Restore initial header spacing except for alerts and blockquotes
+* Remove extra space between Sidebar icons and labels
+* ReadMe updated
+
+## [v1.2.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.1)
+### 02/13/2023
+
+**New:**
+* Support for images with border and rounded border (`image-border`,`image-border-rounded`)
+* Support for 75%, 50% and 25% scaled images with border (`image-75-border`,`image-50-border` and `image-25-border`)
+
+**Improved:**   
+* Consolidate and simplify example custom CSS for LMSs
+* Additional support and improvements for optional dark mode
+* Match Docsify-This CSS with Docsify Starter Kits CSS
+
+## [v1.2.0](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.2.0)
+### 01/02/2023
+
+**New:**
+* Support for 75%, 50% and 25% scaled images (`image-75`,`image-50` and `image-25`)
+* Additional languages for Prismjs (Bash, Go, Java, Kotlin, PHP, Python and Swift in addition to the base set https://docsify.js.org/#/language-highlight?id=language-highlighting)
+
+**Improved:**
+* Adjust page margins when content is being embedded
+* Adjust margins and padding for alerts and blockquotes
+* Increase clickable areas for Topics alphabetical index
+* ReadMe updated
+
+## [v1.1.4](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.1.4)
+### 01/17/2023
+
+**New:**
+* Support for optionaly showing the navbar when embedded/standalone (now fully supported with v1.1.2 release)
+* Support for displaying a footer ('_footer.md' file) via 'footer' setting in index.html or using the URL parameter 'footer=true'
+
+**Improved:**
+* Adjusted opacity of 'header-image-fade' class for improved accessibility
+
+**Bugfix:**   
+* Pass 'navbar' URL parameter for page-to-page navigation links
+
+## [v1.1.3](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.1.3)
+### 12/15/2022
+
+**New**
+* Support for background gradient header image (`header-image-fade`, with thanks to Jamie Adam for original CSS)
+* Support for full-width header image (`header-image-full-width`, optional Table of Contents not available)
+
+**Improved:**
+* ReadMe updated
+
+## [v1.1.2](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.1.2)
+### 11/23/2022
+
+**Improved:**
+* Aligned ToC CSS with Docsify-This.net
+* Support for scrolling of Table of Contents
+* ReadMe updated
+* Removed deprecated emoji plugin (as of Docsify v4.13)
+* Support for page-to-page navigation when embedded/standalone
+* Changed support for light/dark Themeable theme switching to optional
+
+## [v1.1.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.1.1)
+### 09/02/2022
+
+**Improved:**  
+* Reduced page margins when displayed as embedded or standalone
+* Adjusted font size and line height for Topics index items
+* Added example CSS colours to be the same as Sakai LMS
+* Streamlined settings for custom CSS colours
+* Simplified 'ToC' setting in index.html
+* Reduced left margin of page Table of Contents on smaller screens
+* Updated Table of Contents plugin items
+* Added Editor.css file for better Markdown previews
+* Added new Themeable support for light/dark theme switching (OS-level)
+* Adjusted link colours for dark theme
+
+**Bugfix:**   
+* Fixed incorrect links in example course content
+* Added missing Sidebar name and link colour settings
+* Support the removal of the '_sidebar.md' file with standalone setting
+* Remove unused CSS resources
+* Fixed embedded code blocks overflow issues
+
+## [v1.1.0](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.1.0)
+### 05/30/2022
+
+**Improved:**  
+* Aligned default link colour to be the same as Canvas LMS
+* Added example link colours to be the same as Moodle LMS
+* Adjusted left Markdown section padding
+* Adjusted margins for site name in Sidebar
+* Added 'standalone' setting in index.html to permanently alter the display of all pages (i.e. hidden Sidebar and Navbar)
+
+**Bugfix:**   
+* Fixed 'hidegitlink' URL parameter detection
+
+## [v1.0.5](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.5)
+### 03/21/2022
+
+**Improved:**  
+* Adjusted link colours for improved contrast
+
+## [v1.0.4](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.4)
+### 02/15/2022
+
+**New:**  
+* Added conditional display of page table of contents (`?toc=true`)
+
+**Improved:**  
+* Restored user zoom ability for improved accessibility
+* Revised alt image text for improved accessibility
+* Revised JS function `getURLParameterByName` to accept multiple terms (i.e. to support aliases) and also include functionality of previous returnByURLParameterByName function
+
+**Bugfix:**
+* Fixed incorrect H3 headers
+
+## [v1.0.3](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.3)
+### 11/15/2021
+
+**Improved:**  
+* Adjusted header line heights for improved readability
+* Added initial support for responsive font sizing (480px only)
+* Improved badge alignment
+* Improved text label spacing for buttons
+* Removed unneeded embedded check for Pagination Plugin
+* Adjusted right margin of navbar to improve alignment
+* Removed background colour from accordions to better support a dark theme
+
+**Bugfix:**   
+* Added an additional new line before Edit this Page on GitHub links to ensure proper formatting break
+
+## [v1.0.2](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.2)
+### 10/15/2021
+
+**Improved:**  
+* Relocated images to be within course folders
+
+## [v1.0.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.1)
+### 10/09/2021
+
+**Bugfix:**  
+* Fixed course page URLs on Topics pages
+
+## [v1.0.0](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.0)
+### 10/05/2021
+
+**Improved:**
+* Added 'Use this Template on GitHub' button on Sidebar
+* Changed name of Sidebar page
+* Revised Sidebar project links
+* Simplified image folder organization
+* Updated multi-course home image
+* ReadMe updates
+
+## [v1.0.0-preview.1](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/releases/tag/v1.0.0-preview.1)
+### 09/22/2021
+
+**New:**  
+* Welcome to the preview release of Docsify Open MultiCourse Starter Kit!

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Docsify Open MultiCourse Starter Kit</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Docsify Open Course Starter Kit">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/favicon/favicon.png">
+
+  <!-- Preload Default Source Sans 3 Fonts -->
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-regular.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-italic.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-600.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-600italic.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-700.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="assets/fonts/source-sans-3-v15-latin/source-sans-3-v15-latin-700italic.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
+
+  <!-- Core Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css" />
+
+  <!-- Core Dark (add-on) -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5/dist/themes/addons/core-dark.min.css" media="(prefers-color-scheme: dark)"/> -->
+
+  <link rel="stylesheet" href="assets/css/theme.css" id="theme-css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+  <link rel="stylesheet" href="assets/css/docsify-v5-core.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+
+  <!-- Font Awesome Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/brands.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/regular.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/solid.css" />
+
+  <!-- Mermaid -->
+  <!-- Uncomment the line below to render ```mermaid code blocks as diagrams -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js"></script> -->
+
+</head>
+
+<body class="sidebar-chevron-right sidebar-toggle-kebab">
+  <div id="app"></div>
+  <script>
+    // Enter the URL of your own GitHub Repository in between the two quotes below
+    var gitLinkRepoURL = '';
+
+    // Choose where the Edit this Page link appears, either 'top' or 'bottom'
+    var editThisPageLinkPosition = 'bottom';
+
+    // Customize the text for your Edit this Page on GitHub link between the two quotes below
+    // Put the link text in [ ] and use \n to start a new line, such as ---\n for a horizontal rule or <br />\n for extra space
+    var editThisPageLinkText = 'Edit this Page';
+
+    // Set standalone to true to permanently hide the Sidebar and Navbar
+    var standalone = false;
+
+    // Set ToC to true to permanently show page Table of Contents (Sidebar and Navbar must also be hidden)
+    var ToC = false;
+
+    // Set navbar to true to permanently override the hiding of the Navbar when standalone is true
+    var navbar = false;
+
+    // Set footer to true to permanently show the Footer ('_footer.md)
+    var footer = false;
+
+    // Set corethemestyles to true to apply the Docsify v5 core theme defaults
+    var corethemestyles = false;
+
+    // Get value from GET-parameter in URL
+    // @param {array} name Parameter-name
+    // @param {*} isTrue Return if found
+    // @param {*} isFalse Return if not found
+    // @returns {string|null} Parameter-value
+    function getURLParameterByName(name, isTrue = null, isFalse = null, url = window.location.href) {
+
+      let exists = false;
+
+      if (Array.isArray(name)) {
+
+        name.forEach(element => {
+          if (getURLParameterByName(element)) {
+            exists = true;
+          }
+        });
+
+      } else {
+
+        name = name.toLowerCase().replace(/[\[\]]/g, '\\$&');
+
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        var results = regex.exec(url.toLowerCase());
+
+        exists = (results && results[2]) ? true : false;
+      }
+
+      if (exists && isTrue) {
+        return isTrue;
+      }
+
+      if (!exists && isFalse) {
+        return isFalse;
+      }
+
+      return exists;
+    }
+
+    if (corethemestyles) {
+      document.addEventListener('DOMContentLoaded', function() {
+        var themeLink = document.getElementById('theme-css');
+        if (themeLink) {
+          themeLink.remove();
+        }
+      });
+    }
+
+    // Docsify
+
+    // Mermaid setup, which only runs when the Mermaid script in the <head> is uncommented
+    let num = 0;
+    if (typeof mermaid !== 'undefined') {
+      mermaid.initialize({ startOnLoad: false });
+    }
+
+    window.$docsify = {
+      // GENERAL SETTINGS
+      // -----------------------------------------------------------------
+      name: 'Docsify Open MultiCourse Starter Kit',
+      homepage: 'home.md',
+      onlyCover: true,
+      loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
+      loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar || false),
+      mergeNavbar: true,
+      externalLinkTarget: standalone ? '_top' : (getURLParameterByName(['standalone', 'embedded'], '_top', '_blank')),
+      loadFooter: (getURLParameterByName('footer') || footer || false),
+
+      // SIDEBAR NAVIGATION
+      // -----------------------------------------------------------------
+      auto2top: true,
+      maxLevel: 3,
+      // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
+      subMaxLevel: 3,
+      hideSidebar: (getURLParameterByName(['standalone', 'embedded']) || standalone),
+
+      skipLink: (!(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('toc'))) || standalone),
+
+      // PLUGIN SETTINGS
+      // -----------------------------------------------------------------
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto',
+        placeholder: 'Type to search',
+        noData: 'No matches found.',
+        // Headline depth, 1 - 6
+        depth: 6,
+        namespace: 'docsify-open-multicourse-starter-kit' + Date.now(),
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+      },
+ 
+      pagination: {
+        previousText: 'PREVIOUS',
+        nextText: 'NEXT',
+        crossChapter: true,
+        crossChapterText: false,
+      },
+
+      toc: {
+        scope: '.markdown-section',
+        headings: 'h2,h3',
+        title: '',
+      },
+
+      // Render ```mermaid code blocks as diagrams when the Mermaid script in the <head> is uncommented
+      markdown: {
+        renderer: {
+          code({ text, lang }) {
+            if (lang === 'mermaid' && typeof mermaid !== 'undefined') {
+              // Output a hidden placeholder, the diagram is drawn in the doneEach hook below
+              const source = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              return /* html */ `<div class="mermaid" style="visibility: hidden">${source}</div>`;
+            }
+            return this.origin.code.apply(this, arguments);
+          },
+        },
+      },
+
+      // CUSTOM PLUGINS
+      // -----------------------------------------------------------------
+      plugins: [
+        function (hook, vm) {
+
+          // Draw Mermaid diagrams once the Font Awesome icon font has loaded, so labels with icons are sized correctly
+          hook.doneEach(function () {
+            const diagrams = document.querySelectorAll('.markdown-section .mermaid:not([data-processed])');
+            if (typeof mermaid === 'undefined' || !diagrams.length) {
+              return;
+            }
+            const iconFont = document.fonts ? document.fonts.load('900 1em "Font Awesome 6 Free"') : Promise.resolve();
+            const timeout = new Promise(function (resolve) { setTimeout(resolve, 3000); });
+            Promise.race([iconFont, timeout]).catch(function () {}).then(function () {
+              diagrams.forEach(function (diagram) {
+                diagram.setAttribute('data-processed', 'true');
+                try {
+                  diagram.innerHTML = mermaid.render('mermaid-svg-' + num++, diagram.textContent);
+                } catch (error) {
+                  console.error(error);
+                }
+                diagram.style.visibility = '';
+              });
+            });
+          });
+
+          hook.afterEach(function (html, next) {
+            // Invoked each time after the Markdown file is parsed.
+            // beforeEach and afterEach support asynchronous。
+            // ...
+            // call `next(html)` when task is done.
+
+            var htmlElement = document.createElement('div');
+            htmlElement.innerHTML = html;
+
+            /* JS to change Embedly cards to light or dark theme based on system setting when using the light + dark theme (uncomment to use) */
+            /*
+            const embeds = Array.from(htmlElement.querySelectorAll('.embedly-card'))
+            if (!(embeds.length === 0)) {
+               if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)  {
+                  // dark mode
+                  // console.log("dark");
+                  embeds.forEach(embed => {
+                    embed.setAttribute('data-card-theme', 'dark');
+                  });
+                  } else {
+                  // light mode
+                  // console.log("light");
+                  embeds.forEach(embed => {
+                    embed.setAttribute('data-card-theme', 'light');
+                  });
+              }
+              window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+                // console.log(`changed to ${e.matches ? "dark" : "light"} mode`);
+                // console.log(e.matches);            
+                document.location.reload();
+              });
+
+            }
+            */
+
+            next(htmlElement.innerHTML);
+
+          });
+
+          hook.beforeEach(function (html) {
+            if (/githubusercontent\.com/.test(vm.route.file)) {
+              url = vm.route.file
+                .replace('raw.githubusercontent.com', 'github.com')
+                .replace(/\/master/, '/blob/master')
+            } else {
+              url = gitLinkRepoURL + '/blob/main/docs/' + vm.route.file
+            }
+            // Each line of editThisPageLinkText becomes its own paragraph, and the text in [ ] becomes the link
+            // If there are no [ ], the last line becomes the link
+            var lines = editThisPageLinkText.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
+            if (!/\[[^\]]+\](?!\()/.test(editThisPageLinkText)) {
+              lines[lines.length - 1] = '[' + lines[lines.length - 1] + ']';
+            }
+            var editHtml = lines.map(function (line) {
+              return line.replace(/\[([^\]]+)\](?!\()/, function (match, linkText) {
+                return '[:memo:' + linkText + '](' + url + ' ":class=edit-link")';
+              });
+            }).join('\n\n') + '\n'
+
+            if ((!(getURLParameterByName('hidegitlink'))) && (!!gitLinkRepoURL)) {
+              if (editThisPageLinkPosition === 'top') {
+                return editHtml + '\n' + html
+              } else {
+                return html + '<br />' + '\n\n' + editHtml
+              }
+            } else {
+              return html
+            }
+
+          });
+
+          // Invoked on each page load after new HTML has been appended to the DOM
+          hook.doneEach(function () {
+
+            /* Javascript generated/assisted by Anthropic Claude AI */
+            // Function to resolve image paths
+            window.resolveImagePath = function(imagePath) {
+            const basePath = vm.config.basePath || (window.location.pathname !== '/' ? '/' + window.location.pathname.split('/')[1] : '');
+            const cleanImagePath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+            return basePath ? `${basePath}/${cleanImagePath}` : cleanImagePath;
+            };    
+            // Auto-update all images with data-src attribute
+            document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = window.resolveImagePath(img.dataset.src);
+            });
+
+            // Remove optional ToC area if full width header image is present
+            var hasImageHeader = document.getElementsByClassName('header-image-full-width');
+            if (hasImageHeader.length > 0) {
+              const elements = document.getElementsByClassName("nav");
+              while (elements.length > 0) elements[0].remove();
+            }
+
+            // Adjust left margin for optional ToC area if faded header image is present
+            var hasImageFade = document.getElementsByClassName('header-image-fade');
+            var hasNav = document.getElementsByClassName('nav');
+            if (hasImageFade.length > 0 && hasNav.length > 0) {
+              var editCSS = document.createElement('style')
+              editCSS.innerHTML = ".markdown-section {margin-right: 0px;}";
+              document.body.appendChild(editCSS);
+            }
+
+            // Update all iframes with source domains 'youtube.com', 'youtube-nocookie.com', 'docs.google.com' or 'onedrive.live.com' to include the default responsive CSS Markdown class `video-container-16by9`
+            const allIframes = Array.from(document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"], iframe[src*="docs.google.com"], iframe[src*="onedrive.live.com"]'));
+
+            // Filter out iframes that are not already wrapped with a div including the classes 'video-container-16by9' and 'video-container-4by3'
+            const targetIframes = allIframes.filter(function (iframe) {
+              const parentDiv = iframe.parentNode;
+              return !parentDiv.matches('.video-container-16by9, .video-container-4by3');
+            });
+
+            // Wrap each target iframe with a div element
+            targetIframes.forEach(function (iframe) {
+              const wrapperDiv = document.createElement('div');
+              wrapperDiv.classList.add('video-container-16by9');
+              // Preserve existing classes on the iframe
+              iframe.classList.forEach(function (className) {
+                wrapperDiv.classList.add(className);
+              });
+              // Replace the iframe with the wrapper div
+              iframe.parentNode.replaceChild(wrapperDiv, iframe);
+              wrapperDiv.appendChild(iframe);
+            });
+
+          });
+
+        }
+      ]
+    }
+  </script>
+
+  <!-- Docsify v5 release -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/docsify.min.js"></script>
+  <!-- <script src="assets/vendor/docsify/docsify.min.js"></script> -->
+
+  <!-- Adjust Page Margins When Standalone or Embedded -->
+  <script>
+    if ((getURLParameterByName(['standalone', 'embedded']) || standalone)) {
+      const root_theme = document.querySelector(':root');
+      root_theme.style.setProperty('--content-margin-inline', '14px');
+    }
+  </script>
+
+  <!-- Search Box Plugin -->
+  <!-- <script src="assets/js/search.min.js"></script> -->
+
+  <!-- Font Awesome Plugin -->
+  <script src="assets/js/docsify-fontawesome.min.js"></script>
+
+  <!-- LaTeX Plugin (uncomment both lines to use, note that text between $ signs will be treated as math) -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0.5.2/dist/docsify-latex.min.js"></script> -->
+
+  <!-- Tabs Plugin-->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+
+  <!-- Run External Scripts Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/plugins/external-script.min.js"></script>
+
+  <!-- Footnotes Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@sy-records/docsify-footnotes@2/dist/index.min.js"></script>
+
+  <!-- Footer Plugin -->
+  <script src="assets/js/docsify-footer.min.js"></script>
+
+  <!-- Pagination Plugin -->
+  <!-- https://cdn.jsdelivr.net/npm/docsify-pagination@2.10.1/dist/docsify-pagination.min.js -->
+  <script src="assets/js/docsify-pagination.min.js"></script>
+
+  <!-- Docsify Browser-level Image Lazy Loading Plugin -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/@sy-records/docsify-loading/lib/index.min.js"></script> -->
+
+  <!-- Image Grid Plugin -->
+  <script src="assets/js/docsify-img-grid.js"></script>
+
+  <!-- Zoom Image Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@5/dist/plugins/zoom-image.min.js"></script>
+
+  <!-- Responsive Tables Plugin -->
+  <!-- <script src="assets/js/docsify-responsive-tables.js"></script> -->
+
+  <!-- Table of Contents Plugin -->
+  <script>
+    if (getURLParameterByName('toc') || ToC) {
+      document.write('<link rel="stylesheet" type="text/css" href="assets/css/toc.css" />');
+      document.write('<script src="assets/js/toc.js"><\/script>');
+    }
+  </script>
+
+  <!-- Embedly JS -->
+  <script src="https://cdn.embedly.com/widgets/platform.js"></script>
+
+  <!-- Additional Languages for Prismjs -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-kotlin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-swift.min.js"></script>
+
+</body>
+
+</html>
